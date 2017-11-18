@@ -1,0 +1,27 @@
+{
+  "name": "rznu-lab1",
+  "version": "1.0.0",
+  "description": "LAB 1",
+  "main": "server.js",
+  "scripts": {
+    "lab1": "babel-watch --watch src/ src/server.js"
+  },
+  "keywords": [
+    "node.js",
+    "REST",
+    "JWT"
+  ],
+  "author": "MSekrst",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-watch": "^2.0.7"
+  }
+}
