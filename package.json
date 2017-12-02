@@ -1,7 +1,7 @@
 {
-  "name": "rznu-lab1",
+  "name": "rznu",
   "version": "1.0.0",
-  "description": "LAB 1",
+  "description": "Practical assignments for Service Oriented Applications (SOA) course",
   "main": "server.js",
   "scripts": {
     "lab1": "babel-watch --watch src/ src/server.js"
@@ -14,13 +14,15 @@
   "author": "MSekrst",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^4.0.0",
+    "basic-auth": "^2.0.0",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "mongodb": "^2.2.33",
     "morgan": "^1.9.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-watch": "^2.0.7"
   }
