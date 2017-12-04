@@ -32,3 +32,5 @@ const protocol = PROTOCOL || 'http'
 
 // start listening for incoming connections 
 app.listen(port, () => console.log(`Listening on: ${protocol}://${host}:${port}`))
+
+export default app

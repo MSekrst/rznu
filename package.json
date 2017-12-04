@@ -4,7 +4,9 @@
   "description": "Practical assignments for Service Oriented Applications (SOA) course",
   "main": "server.js",
   "scripts": {
-    "lab1": "babel-watch --watch src/ src/server.js"
+    "build": "babel src/ --out-dir build/",
+    "lab1": "export NODE_ENV=development && babel-watch --watch src/ src/server.js",
+    "test": "export NODE_ENV=test && yarn build && mocha build/test/**/*.js"
   },
   "keywords": [
     "node.js",
@@ -24,6 +26,9 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-watch": "^2.0.7"
+    "babel-watch": "^2.0.7",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.1"
   }
 }

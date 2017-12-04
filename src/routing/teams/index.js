@@ -1,40 +1,40 @@
 import { Router } from 'express'
 import { getDbConnection, isValidId, getIdObject } from '../../database'
 
-const playerRouter = Router()
+const teamRouter = Router()
 
-const databaseCollectionName = 'players'
+const databaseCollectionName = 'teams'
 
 /**
- * @api {get} api/players/ Get players
- * @apiName GetPlayer
- * @apiGroup Player
+ * @api {get} api/teams/ Get teams
+ * @apiName GetTeams
+ * @apiGroup Team
  * @apiHeader authorization Basic authorization value.
  *
- * @apiSuccess / {array} List of players.
+ * @apiSuccess / {array} List of teams.
  */
-playerRouter.get('/', (req, res) => {
+teamRouter.get('/', (req, res) => {
   const db = getDbConnection()
 
   db
     .collection(databaseCollectionName)
     .find({})
-    .toArray((err, players) => {
-      return err ? res.status(500).json(err) : res.status(200).json(players)
+    .toArray((err, teams) => {
+      return err ? res.status(500).json(err) : res.status(200).json(teams)
     })
 })
 
 /**
- * @api {put} api/players/ Create new player
- * @apiName CreatePlayer
- * @apiGroup Player
+ * @api {put} api/teams/ Create new team
+ * @apiName CreateTeam
+ * @apiGroup Team
  * @apiHeader authorization Basic authorization value.
  * @apiVersion 1.0.0
  * 
- * @apiParam {String} name Player name
- * @apiParam {number} number Player number
+ * @apiParam {String} name Team name
+ * @apiParam {String} city Team home city
  */
-playerRouter.put('/', (req, res) => {
+teamRouter.put('/', (req, res) => {
   const db = getDbConnection()
 
   db.collection(databaseCollectionName).insert(req.body, (err, data) => {
@@ -43,17 +43,17 @@ playerRouter.put('/', (req, res) => {
 })
 
 /**
- * @api {put} api/players/:id Update player
- * @apiName UpdatePlayer
- * @apiGroup Player
+ * @api {put} api/teams/:id Update team
+ * @apiName UpdateTeam
+ * @apiGroup Team
  * @apiHeader authorization Basic authorization value.
  * @apiVersion 1.0.0
  * 
- * @apiParam {string} Player ID.
- * @apiParam {String} [name] Player name
- * @apiParam {number} [number] Player number
+ * @apiParam {string} Team ID.
+ * @apiParam {String} [name] Team name
+ * @apiParam {String} [number] Team city
  */
-playerRouter.put('/:id', (req, res, next) => {
+teamRouter.put('/:id', (req, res, next) => {
   if (!isValidId(req.params.id)) {
     // return next middleware if route parameter is not valid ID
     return next()
@@ -72,15 +72,15 @@ playerRouter.put('/:id', (req, res, next) => {
 })
 
 /**
- * @api {delete} api/players/:id Delete player
- * @apiName DeletePlayer
- * @apiGroup Player
+ * @api {delete} api/teams/:id Delete team
+ * @apiName DeleteTeam
+ * @apiGroup Team
  * @apiHeader authorization Basic authorization value.
  * @apiVersion 1.0.0
  * 
- * @apiParam {string} Player ID.
+ * @apiParam {string} Team ID.
  */
-playerRouter.delete('/:id', (req, res, next) => {
+teamRouter.delete('/:id', (req, res, next) => {
   if (!isValidId(req.params.id)) {
     // return next middleware if route parameter is not valid ID
     return next()
@@ -98,4 +98,6 @@ playerRouter.delete('/:id', (req, res, next) => {
   })
 })
 
-export default playerRouter
+
+
+export default teamRouter
