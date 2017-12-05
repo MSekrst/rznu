@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "build": "babel src/ --out-dir build/",
-    "lab1": "export NODE_ENV=development && babel-watch --watch src/ src/server.js",
-    "test": "export NODE_ENV=test && yarn build && mocha build/test/**/*.js"
+    "server": "export NODE_ENV=development && babel-watch --watch src/ src/server.js",
+    "test": "export NODE_ENV=test && yarn build && mocha build/test/**/*.js",
+    "docs": "apidoc -i src/ -o out/"
   },
   "keywords": [
     "node.js",
@@ -23,6 +24,7 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",

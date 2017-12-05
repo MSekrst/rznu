@@ -6,8 +6,6 @@ const databaseUsersCollection = 'users'
 export const authMiddleware = (req, res, next) => {
   const authObject = auth(req)
 
-  console.log(authObject)
-
   if (!authObject) {
     return res.status(401).end()
   }

@@ -14,9 +14,13 @@ const app = express()
 
 // apply middlewares 
 app.use(morgan('dev'))
-app.use(authMiddleware)
+// auth middleware only for api routes
+app.use('/api/*', authMiddleware)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+// serve public statc files -> api docs
+app.use(express.static('out'))
 
 // connect router to server
 app.use('/api', apiRouter)

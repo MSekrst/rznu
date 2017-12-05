@@ -12,6 +12,11 @@ const teamExample = {
   city: 'Rijeka'
 }
 
+const playerExample = {
+  name: 'Ivan Horvat',
+  number: 9
+}
+
 let insertedId = null
 
 describe('Teams', () => {
@@ -81,6 +86,34 @@ describe('Teams', () => {
       .end((err, res) => {
         chai.assert(err === null)
         res.should.have.status(204)
+
+        done()
+      })
+  })
+
+  it('should return players in team', done => {
+    chai
+      .request(server)
+      .get(`/api/teams/${insertedId}/players`)
+      .auth('user', 'pass')
+      .end((err, res) => {
+        chai.assert(err === null)
+        res.should.have.status(200)
+        res.body.should.be.a('array')
+
+        done()
+      })
+  })
+
+  it('should modify existing team', done => {
+    chai
+      .request(server)
+      .post(`/api/teams/${insertedId}/players`)
+      .auth('user', 'pass')
+      .send(playerExample)
+      .end((err, res) => {
+        chai.assert(err === null)
+        res.should.have.status(201)
 
         done()
       })

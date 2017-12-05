@@ -9,9 +9,10 @@ const databaseCollectionName = 'players'
  * @api {get} api/players/ Get players
  * @apiName GetPlayer
  * @apiGroup Player
- * @apiHeader authorization Basic authorization value.
+ * @apiHeader authorization Basic authorization value
+ * @apiVersion 1.0.0
  *
- * @apiSuccess / {array} List of players.
+ * @apiSuccess {array} players List of players
  */
 playerRouter.get('/', (req, res) => {
   const db = getDbConnection()
@@ -28,7 +29,7 @@ playerRouter.get('/', (req, res) => {
  * @api {put} api/players/ Create new player
  * @apiName CreatePlayer
  * @apiGroup Player
- * @apiHeader authorization Basic authorization value.
+ * @apiHeader authorization Basic authorization value
  * @apiVersion 1.0.0
  * 
  * @apiParam {String} name Player name
@@ -46,7 +47,7 @@ playerRouter.put('/', (req, res) => {
  * @api {put} api/players/:id Update player
  * @apiName UpdatePlayer
  * @apiGroup Player
- * @apiHeader authorization Basic authorization value.
+ * @apiHeader authorization Basic authorization value
  * @apiVersion 1.0.0
  * 
  * @apiParam {string} Player ID.
@@ -75,10 +76,10 @@ playerRouter.put('/:id', (req, res, next) => {
  * @api {delete} api/players/:id Delete player
  * @apiName DeletePlayer
  * @apiGroup Player
- * @apiHeader authorization Basic authorization value.
+ * @apiHeader authorization Basic authorization value
  * @apiVersion 1.0.0
  * 
- * @apiParam {string} Player ID.
+ * @apiParam {string} Player ID
  */
 playerRouter.delete('/:id', (req, res, next) => {
   if (!isValidId(req.params.id)) {
